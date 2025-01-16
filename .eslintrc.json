@@ -1,5 +1,5 @@
 {
-  "extends": ["expo"],
+  "extends": ["expo", "plugin:@tanstack/query/recommended"],
   "plugins": ["prettier"],
   "rules": {
     "prettier/prettier": "error"
