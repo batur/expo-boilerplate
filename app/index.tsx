@@ -1,6 +1,9 @@
+import { useLocale } from "@common/hooks";
 import { Text, View } from "react-native";
 
 export default function Index() {
+  const { t, languageCode } = useLocale();
+  console.log(languageCode);
   return (
     <View
       style={{
