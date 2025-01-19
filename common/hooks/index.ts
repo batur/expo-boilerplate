@@ -1,3 +1,1 @@
-import { LocaleProvider, useLocale } from "./useLocale";
-
-export { LocaleProvider, useLocale };
+export { default as useLocae } from "./useLocale";
