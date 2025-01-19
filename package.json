@@ -15,7 +15,8 @@
     "test": "jest --watchAll",
     "testDebug": "jest -o --watch --coverage=false",
     "testFinal": "jest",
-    "updateSnapshots": "jest -u --coverage=false"
+    "updateSnapshots": "jest -u --coverage=false",
+    "clear-cache": "bash ./common/utils/clear.sh"
   },
   "jest": {
     "preset": "jest-expo"
