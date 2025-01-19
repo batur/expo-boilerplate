@@ -9,10 +9,9 @@ export default function Index() {
       style={{
         flex: 1,
         justifyContent: "center",
-        alignItems: "center",
       }}
     >
-      <Text className="text-red-500 text-3xl">
+      <Text className="text-2xl text-emerald-600 text-center">
         {t("welcome", {
           name: "Batur",
         })}

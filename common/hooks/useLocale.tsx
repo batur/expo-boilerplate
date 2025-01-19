@@ -5,20 +5,17 @@ import { I18n, Scope, TranslateOptions } from "i18n-js";
 import { getLocales } from "expo-localization";
 import { localeStore } from "@common/stores";
 
+import EN from "@common/locales/en.json";
+import TR from "@common/locales/tr.json";
+import AR from "@common/locales/ar.json";
+
 const i18n = new I18n({
-  en: {
-    greeting: "Hello",
-    welcome: "Welcome, {{name}}!",
-  },
-  es: {
-    greeting: "Hola",
-    welcome: "¡Bienvenido, {{name}}!",
-  },
+  en: EN,
+  tr: TR,
+  ar: AR,
 });
 
 i18n.defaultLocale = "en";
-
-i18n.enableFallback = true;
 
 export default function useLocale() {
   const { setLocales, setSelectedLocale, getSelectedLocale } = localeStore();
@@ -39,6 +36,7 @@ export default function useLocale() {
   return {
     languageCode: getSelectedLocale().languageCode,
     localeDetails: getSelectedLocale(),
+    textDirection: getLocales()[0].textDirection,
     t,
   };
 }
