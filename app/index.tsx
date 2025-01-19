@@ -1,9 +1,9 @@
-import { useLocale } from "@common/hooks";
+import useLocale from "@common/hooks/useLocale";
 import { Text, View } from "react-native";
 
 export default function Index() {
-  const { t, languageCode } = useLocale();
-  console.log(languageCode);
+  const { t } = useLocale();
+
   return (
     <View
       style={{
@@ -12,7 +12,11 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text className="text-red-500">Edit app/index.tsx to edit this screen.</Text>
+      <Text className="text-red-500 text-3xl">
+        {t("welcome", {
+          name: "Batur",
+        })}
+      </Text>
     </View>
   );
 }

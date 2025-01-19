@@ -1,50 +1,44 @@
-import { createContext, useContext, useEffect } from "react";
-import { getLocales } from "expo-localization";
-import { I18n, Scope, TranslateOptions } from "i18n-js";
+// useLocale.js
+import { useEffect, useCallback } from "react";
 
+import { I18n, Scope, TranslateOptions } from "i18n-js";
+import { getLocales } from "expo-localization";
 import { localeStore } from "@common/stores";
 
-type LocaleContextType = {
-  t: <T = string>(scope: Scope, options?: TranslateOptions) => string | T;
-  languageCode: string;
-  localeDetails: {};
-} | null;
+const i18n = new I18n({
+  en: {
+    greeting: "Hello",
+    welcome: "Welcome, {{name}}!",
+  },
+  es: {
+    greeting: "Hola",
+    welcome: "¡Bienvenido, {{name}}!",
+  },
+});
 
-const LocaleContext = createContext<LocaleContextType>(null);
+i18n.defaultLocale = "en";
 
-type LocaleProviderProps = {
-  children: React.ReactNode;
-};
+i18n.enableFallback = true;
 
-export const LocaleProvider: React.FC<LocaleProviderProps> = ({ children }) => {
-  const i18n = new I18n({
-    en: { welcome: "Hello" },
-    ja: { welcome: "こんにちは" },
-  });
-
+export default function useLocale() {
   const { setLocales, setSelectedLocale, getSelectedLocale } = localeStore();
 
   useEffect(() => {
     setLocales(getLocales());
-    setSelectedLocale(getLocales()[0].languageCode || "en");
-    i18n.locale = getLocales()[0].languageCode || "en";
-  }, []);
+    setSelectedLocale(getLocales()[0].languageCode);
+    i18n.locale = getLocales()[0].languageCode || i18n.defaultLocale;
+  }, [getLocales]);
 
-  return (
-    <LocaleContext.Provider
-      value={{ t: i18n.t, languageCode: i18n.locale, localeDetails: getSelectedLocale() }}
-    >
-      {children}
-    </LocaleContext.Provider>
+  const t: <T = string>(scope: Scope, options?: TranslateOptions) => string | T = useCallback(
+    (scope, options) => {
+      return i18n.t(scope, options);
+    },
+    [],
   );
-};
 
-export const useLocale = () => {
-  const store = useContext(LocaleContext);
-  if (!store) {
-    throw new Error("useLocale must be used within a LocaleProvider");
-  }
-  return store;
-};
-
-export const useStoreContext = () => {};
+  return {
+    languageCode: getSelectedLocale().languageCode,
+    localeDetails: getSelectedLocale(),
+    t,
+  };
+}
