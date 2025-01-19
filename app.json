@@ -37,6 +37,15 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "00fa128c-77ea-4910-8832-97b1f60cd693"
+      }
+    },
+    "owner": "paxtartarica"
   }
 }

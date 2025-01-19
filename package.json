@@ -8,11 +8,14 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "test": "jest --watchAll",
     "lint": "expo lint",
     "prettier": "prettier --check \"**/*.{js,jsx,ts,tsx}\"",
     "prettier:fix": "prettier --write \"**/*.{js,jsx,ts,tsx}\"",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "test": "jest --watchAll",
+    "testDebug": "jest -o --watch --coverage=false",
+    "testFinal": "jest",
+    "updateSnapshots": "jest -u --coverage=false"
   },
   "jest": {
     "preset": "jest-expo"
@@ -54,6 +57,7 @@
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@tanstack/eslint-plugin-query": "^5.62.16",
+    "@testing-library/react-native": "^13.0.1",
     "@types/jest": "^29.5.12",
     "@types/react": "~18.3.12",
     "@types/react-test-renderer": "^18.3.0",
