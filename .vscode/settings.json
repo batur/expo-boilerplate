@@ -3,6 +3,22 @@
     ".expo": true,
     "node_modules": true,
     "yarn.lock": true,
-    "LICENSE": true
+    "LICENSE": true,
+    ".eslintrc.json": true,
+    ".eslintignore": true,
+    ".gitignore": true,
+    ".prettierrc.json": true,
+    "babel.config.js": true,
+    "eas.json": true,
+    "nativewind-env.d.ts": true,
+    "app.json": true,
+    "components.json": true,
+    "expo-env.d.ts": true,
+    "metro.config.js": true,
+    "tailwind.config.js": true,
+    "tsconfig.json": true,
+    "global.css": true,
+    ".env": true,
+    ".env.*": true
   }
 }
