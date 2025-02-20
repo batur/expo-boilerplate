@@ -8,6 +8,7 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "~/*": ["./common/*"],
       "@common/*": ["./common/*"]
     }
   },
